@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Past;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -34,12 +34,14 @@ public class ClientDTO {
     @NotEmpty
     private String cpf;
 
-    @Past
+    public Integer age;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate birth;
 
+    @JsonProperty("age")
     public Integer getAge() {
         if (birth == null)
             return null;
