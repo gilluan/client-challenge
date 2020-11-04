@@ -8,7 +8,7 @@
 ### Getting started
 To run this project you can use docker-compose using the command: 
 ```sh
-docker-compose up
+mvn clean package && docker-compose up 
 ```
 
 ### Testing
